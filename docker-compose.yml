@@ -1,0 +1,12 @@
+builder-data:
+  build: crystalnix/docker-chromium-builder
+  volumes:
+    - ${CHROMIUM_SRC}:/src
+
+builder:
+  build: crystalnix/docker-chromium-builder
+  volumes_from:
+    - builder-data
+  environment:
+    - LC_CTYPE=en_US.UTF-8
+    - CHROME_DEVEL_SANDBOX=1
